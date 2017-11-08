@@ -1,5 +1,5 @@
 require_relative 'contact.rb'
-require "pry"
+
 class CRM
 
   def initialize(name_entered)
