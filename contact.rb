@@ -45,7 +45,7 @@ class Contact
     attribute = gets.chomp
     puts "What is the new value for #{attribute}?"
     attribute_new_value = gets.chomp
-    self.selector_change(attribute, attribute_new_value)
+    selector_change(attribute, attribute_new_value)
   end
 
   # This method should work similarly to the find method above
@@ -72,7 +72,7 @@ class Contact
   end
 
   def full_name
-    return self.first_name + " " + self.last_name
+    return first_name + " " + last_name
   end
 
   # This method should delete the contact
@@ -123,13 +123,13 @@ class Contact
 
   def selector(attribute)
     if attribute == "first_name"
-      self.first_name
+      first_name
     elsif attribute == "last_name"
-      self.last_name
+      last_name
     elsif attribute == "email"
-      self.email
+      email
     elsif attribute == "note"
-      self.note
+      note
     end
   end
 
