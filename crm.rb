@@ -52,21 +52,30 @@ class CRM
     print "Enter a Note: "
     note = gets.chomp
 
-    Contact.create(first_name, last_name, email, note)
-  end
+    contact = Contact.create(
+      first_name: first_name,
+      last_name:  last_name,
+      email:      email,
+      note:       note
+    )
+   end
 
   def modify_existing_contact
     print "What is the contact id# of the contact you wish to change?"
     id = gets.chomp.to_i
-    contact = find_by_id(id)
-    contact.update
+    print "What is the key you want to update?"
+    key = gets.chomp
+    print "What is the value of #{key.to_s}?"
+    value = gets.chomp
+    contact = Contact.find(id)
+    contact.update({key=>value})
 
   end
 
   def delete_contact
     print "What is the contact id# of the contact you wish to delete?"
     id = gets.chomp.to_i
-    find_by_id(id).delete
+    Contact.find(id).delete
   end
 
   def delete_all
@@ -74,21 +83,18 @@ class CRM
   end
 
   def display_all
-    print Contact.all_contacts
+    print Contact.all.inspect
   end
 
   def search_by_attribute
-    print Contact.find_by
+    print "What is the key you want to search by?"
+    key = gets.chomp
+    print "What is the value of #{key.to_s}?"
+    value = gets.chomp
+    person = Contact.find_by({key=>value})
+    puts person.inspect
   end
 
-  def find_by_id(chosen_id)
-    all_contact = Contact.all_contacts
-    all_contact.each do |contact|
-      if contact.id == chosen_id.to_i
-         return contact
-      end
-    end
-  end
 end
 
 crm = CRM.new("OOP")
