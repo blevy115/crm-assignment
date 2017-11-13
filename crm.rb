@@ -93,3 +93,7 @@ end
 
 crm = CRM.new("OOP")
 crm.main_menu
+
+at_exit do
+  ActiveRecord::Base.connection.close
+end
